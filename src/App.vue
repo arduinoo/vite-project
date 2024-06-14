@@ -2,21 +2,48 @@
   <div>
     <h1>vue-router</h1>
     <div>
-      <!--使用 router-link 组件进行导航 -->
-      <!--通过传递 `to` 来指定链接 -->
-      <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
-      <router-link tag="div" to="/">跳转a</router-link>
-      <router-link tag="div" style="margin-left: 200px" to="/register"
-        >跳转b</router-link
-      >
+      <template v-for="item in list">
+        <!-- <router-link tag="div" :to="{ name: item.name }">
+          <button style="margin-left: 10px">跳转{{ item.name }}</button>
+        </router-link> -->
+        <button style="margin-left: 10px" @click="toPage(item.url)">
+          跳转{{ item.name }}
+        </button>
+      </template>
+      <button @click="prev" style="margin-left: 10px">后退</button>
+      <!-- <button @click="toPage('A')">跳转A</button>
+      <button @click="toPage('B')" style="margin-left: 10px">跳转B</button> -->
     </div>
     <hr />
-    <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
     <router-view></router-view>
+
+    <!-- <div>{{ route.query }}</div> -->
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { reactive } from "vue";
+import { useRouter, useRoute } from "vue-router";
+const router = useRouter();
+const route = useRoute();
+
+const toPage = (path: string) => {
+  router.push({
+    path,
+    query: { key1: path, key2: "6666" },
+  });
+};
+
+const prev = () => {
+  //后退
+  router.back();
+};
+
+const list = reactive([
+  { name: "A", url: "/" },
+  { name: "B", url: "/register" },
+]);
+</script>
 
 <style scoped></style>
