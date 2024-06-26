@@ -7,13 +7,13 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import { getDataApi } from "../service/api";
+import { getPostsApi, getCommentsApi } from "../service/api";
 
 const result = ref();
 
 async function getUser() {
   try {
-    const response = await getDataApi({
+    const response = await getPostsApi({
       key: 11111111111,
     });
     console.log(response);

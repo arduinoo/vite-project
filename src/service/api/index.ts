@@ -1,5 +1,9 @@
 import http from "../../utils/http";
 
-export function getDataApi(payload: any) {
-  return http.get("/todos/1", payload);
+export function getPostsApi(payload: any) {
+  return http.post("/posts", payload);
+}
+
+export function getCommentsApi(payload: any) {
+  return http.post("/comments", payload);
 }
