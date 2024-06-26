@@ -24,9 +24,8 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 const router = useRouter();
-const route = useRoute();
 
 const toPage = (path: string) => {
   router.push({

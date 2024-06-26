@@ -7,7 +7,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import { getPostsApi, getCommentsApi } from "../service/api";
+import { getPostsApi } from "../service/api";
 
 const result = ref();
 

@@ -28,7 +28,7 @@ http.interceptors.request.use(
 // 响应拦截器
 http.interceptors.response.use(
   (response) => {
-    const res = response;
+    const res: any = response;
     console.log("响应拦截器-res: ", res);
     // 如果自定义的 code 不是 20000，则判断为错误
     if (res.status !== 200) {
